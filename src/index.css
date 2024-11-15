@@ -25,10 +25,9 @@ h2 {
 }
 
 button {
-    background-color: #3B71CA;
-    color: white;
     padding: 10px;
     font-size: 18px;
     margin: 5px;
     border-radius: 10px;
+    border: none;
 }

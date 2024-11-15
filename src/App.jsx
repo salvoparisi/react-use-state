@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import languages from './assets/languages.js'
+import languages from './assets/languages.js';
+
 export default function App() {
-  const [selectedBtn, setSelectedBtn] = useState(0)
+  const [selectedBtn, setSelectedBtn] = useState(0);
 
   return (
     <>
@@ -10,17 +11,30 @@ export default function App() {
       </header>
       <main>
         <div className="container">
-          {languages.map(obj => {
-            return <button key={obj.id} onClick={() => setSelectedBtn(obj)}>{obj.title}</button>
-          })}
-          <div className="content">{selectedBtn ? (
-            <>
-              <h2>{selectedBtn.title}</h2>
-              <div>{selectedBtn.description}</div>
-            </>
-          ) : ("no languages selected")}</div>
+          {languages.map(obj => (
+            <button
+              key={obj.id}
+              onClick={() => setSelectedBtn(obj.id)}
+              style={{
+                backgroundColor: selectedBtn === obj.id ? "yellow" : "blue",
+                color: selectedBtn === obj.id ? "black" : "white",
+              }}
+            >
+              {obj.title}
+            </button>
+          ))}
+          <div className="content">
+            {selectedBtn ? (
+              <>
+                <h2>{languages.find(lang => lang.id === selectedBtn).title}</h2>
+                <div>{languages.find(lang => lang.id === selectedBtn).description}</div>
+              </>
+            ) : (
+              "No languages selected"
+            )}
+          </div>
         </div>
       </main>
     </>
-  )
+  );
 }
