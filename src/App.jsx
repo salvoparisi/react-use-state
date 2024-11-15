@@ -11,10 +11,15 @@ export default function App() {
       <main>
         <div className="container">
           {languages.map(obj => {
-            return <button key={obj.id} onClick={() => setSelectedBtn(obj.description)}>{obj.title}</button>
+            return <button key={obj.id} onClick={() => setSelectedBtn(obj)}>{obj.title}</button>
           })}
+          <div className="content">{selectedBtn ? (
+            <>
+              <h2>{selectedBtn.title}</h2>
+              <div>{selectedBtn.description}</div>
+            </>
+          ) : ("no languages selected")}</div>
         </div>
-        <div>{selectedBtn ? (selectedBtn) : ("no languages selected")}</div>
       </main>
     </>
   )
