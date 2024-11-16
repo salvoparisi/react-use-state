@@ -14,10 +14,10 @@ export default function App() {
           {languages.map(obj => (
             <button
               key={obj.id}
-              onClick={() => setSelectedBtn(obj.id)}
+              onClick={() => setSelectedBtn(obj)}
               style={{
-                backgroundColor: selectedBtn === obj.id ? "yellow" : "blue",
-                color: selectedBtn === obj.id ? "black" : "white",
+                backgroundColor: selectedBtn.id === obj.id ? "yellow" : "blue",
+                color: selectedBtn.id === obj.id ? "black" : "white",
               }}
             >
               {obj.title}
@@ -26,8 +26,8 @@ export default function App() {
           <div className="content">
             {selectedBtn ? (
               <>
-                <h2>{languages.find(lang => lang.id === selectedBtn).title}</h2>
-                <div>{languages.find(lang => lang.id === selectedBtn).description}</div>
+                <h2>{selectedBtn.title}</h2>
+                <div>{selectedBtn.description}</div>
               </>
             ) : (
               "No languages selected"
